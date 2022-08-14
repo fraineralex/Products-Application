@@ -1,0 +1,29 @@
+<main>
+
+  {{#if hasProducts}}
+
+    <h1>Product list</h1>
+
+    <div class="row">
+      {{#each prods}}
+
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.title}}" />
+            <div class="card-body">
+              <h5 class="card-title">{{this.title}} - ${{this.price}}</h5>
+              <p class="card-text">{{this.description}}</p>
+              <button class="btn btn-primary">Add cart</button>
+            </div>
+          </div>
+        </div>
+
+      {{/each}}
+    </div>
+  {{else}}
+
+    <h1>No products found!</h1>
+
+  {{/if}}
+
+</main>

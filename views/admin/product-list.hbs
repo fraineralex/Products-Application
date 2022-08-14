@@ -1,0 +1,48 @@
+<main>
+
+  {{#if hasProducts}}
+
+    <h1>Product list</h1>
+
+    <div class="row">
+      {{#each prods}}
+
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="{{this.imageUrl}}"
+              class="card-img-top"
+              alt="{{this.title}}"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{this.title}} - ${{this.price}}</h5>
+              <p class="card-text">{{this.description}}</p>
+
+              <form
+                class="form-inline"
+                action="/admin/delete-product"
+                method="post"
+              >
+
+                <a
+                  href="edit-product/{{this.id}}?edit=true"
+                  class="btn btn-primary"
+                >edit</a>
+
+                <input type="hidden" name="ProductId" value="{{this.id}}" />
+                <button class="btn btn-primary">delete</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      {{/each}}
+    </div>
+  {{else}}
+
+    <h1>No products found!</h1>
+
+  {{/if}}
+
+</main>

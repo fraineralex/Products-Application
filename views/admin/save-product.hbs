@@ -1,0 +1,42 @@
+<main>
+
+  <div class="card">
+    <div class="card-header">
+      Formulario de producto
+    </div>
+    <div class="card-body">
+
+      <form method="POST" action="{{#if editMode}}/admin/edit-product{{else}}/admin/add-product{{/if}}">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="Title" value="{{#if editMode}}{{product.title}}{{/if}}" />
+
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Image Url:</label>
+          <input type="text" class="form-control" id="image" name="ImageUrl" value="{{#if editMode}}{{product.imageUrl}}{{/if}}" />
+
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Price:</label>
+          <input type="number" class="form-control" id="price" name="Price" step="0.01" value="{{#if editMode}}{{product.price}}{{/if}}" />
+
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" name="Description" id="description" rows="5">{{#if editMode}}{{product.description}}{{/if}}</textarea>
+        </div>
+
+        {{#if editMode}}
+
+          <input type="hidden" name="ProductId" value="{{product.id}}">
+
+        {{/if}}
+
+        <button type="submit" class="btn btn-primary">{{#if editMode}}Update{{else}}Add{{/if}}</button>
+      </form>
+
+    </div>
+  </div>
+
+</main>
